@@ -36,9 +36,6 @@ function App({fetchMethod}) {
       setoneTimeBoolean(oneTimeBoolean=true);
     }      
   }
-export let handleStateC=(setminutesState)=>{
-    setminutesState(a.target.value)
-}
 
  let secondsToTime=(DurationInSeconds)=>{
     let hourTracker=parseInt(DurationInSeconds/3600)
