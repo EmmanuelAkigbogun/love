@@ -4,6 +4,7 @@ import { fetchData } from "./online";
 import { downloadListFile } from "./Files";
 import { fileBoolean } from "./Files";
 import { connection } from "./online";
+import {settimervar} from ""./Files"
 online()
 let wordas=0;
 let wrongWords=0;
