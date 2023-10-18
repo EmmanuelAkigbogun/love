@@ -37,7 +37,7 @@ function App({fetchMethod}) {
     }      
   }
 export let handleStateC=(setminutesState)=>{
-    setminutesState(e.target.value)
+    setminutesState(a.target.value)
 }
 
  let secondsToTime=(DurationInSeconds)=>{
