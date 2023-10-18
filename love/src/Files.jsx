@@ -1,6 +1,5 @@
 import { useRef, useState } from "react"
 import { batteryChanged } from "./App"
-import { handleStateC } from "./App"
 let storedList=""
 export let downloadListFile=""
 export let fileBoolean=true;
@@ -70,7 +69,7 @@ export let Files=({fetchMethod})=>{
     onChange={
         (a)=>{
             se(a.target.value)
-                    handleStateC(setminutesState)
+          
         }
         }
         onKeyDown={
