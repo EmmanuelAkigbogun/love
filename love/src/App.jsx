@@ -37,6 +37,22 @@ function App({fetchMethod}) {
     }      
   }
 
+ let secondsToTime=(DurationInSeconds)=>{
+    let hourTracker=parseInt(DurationInSeconds/3600)
+    let minuteTracker=parseInt((DurationInSeconds-hourTracker*3600)/60)
+    let hourToSec=hourTracker*3600
+     if(TimeLimitOne&&hourTracker==0
+         &&minuteTracker==Number(minutesState)
+         &&(DurationInSeconds-hourToSec-minuteTracker*60)==0){
+         TimerOff=true;TimeLimitOne=false;
+          textareas.current.setAttribute("maxlength",value.length)
+     }
+     else{TimerOff=false}
+    return "Stop Watch => "
+    +hourTracker+":"
+    +minuteTracker+":"
+    +(DurationInSeconds-hourToSec-minuteTracker*60)
+  }
   let stopWatch=()=>{
     TimerOff=false
     setstopWatchDisplay(e=>e="Stop Watch => 0:0:0")
