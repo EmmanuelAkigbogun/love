@@ -8,22 +8,6 @@ navigator.onLine&&
  })
 }
 
-export   let secondsToTime=(DurationInSeconds,TimeLimitOne,TimerOff)=>{
-    let hourTracker=parseInt(DurationInSeconds/3600)
-    let minuteTracker=parseInt((DurationInSeconds-hourTracker*3600)/60)
-    let hourToSec=hourTracker*3600
-     if(TimeLimitOne&&hourTracker==0
-         &&minuteTracker==Number(minutesState)
-         &&(DurationInSeconds-hourToSec-minuteTracker*60)==0){
-         TimerOff=true;TimeLimitOne=false;
-          textareas.current.setAttribute("maxlength",value.length)
-     }
-     else{TimerOff=false}
-    return "Stop Watch => "
-    +hourTracker+":"
-    +minuteTracker+":"
-    +(DurationInSeconds-hourToSec-minuteTracker*60)
-  }
   
   export let connection=(fileBoolean,setvalues,setstates,values,downloadListFile,fetchData)=>{
       console.log(fileBoolean)
