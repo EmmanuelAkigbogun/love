@@ -1,6 +1,7 @@
 import { useRef, useState } from "react"
 import { batteryChanged } from "./App"
 let storedList=""
+let settimervar="3"
 export let downloadListFile=""
 export let fileBoolean=true;
 export let Files=({fetchMethod})=>{
@@ -69,6 +70,7 @@ export let Files=({fetchMethod})=>{
     onChange={
         (a)=>{
             se(a.target.value)
+            typeof Number (e.target.value)="number"&&settimervar=e.target.value
           
         }
         }
