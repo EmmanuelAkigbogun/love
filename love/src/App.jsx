@@ -3,7 +3,6 @@ import { online } from "./online";
 import { fetchData } from "./online";
 import { downloadListFile } from "./Files";
 import { fileBoolean } from "./Files";
-import { secondsToTime } from "./online";
 import { connection } from "./online";
 online()
 let wordas=0;
@@ -46,7 +45,7 @@ function App({fetchMethod}) {
       if(TimerOff){clearInterval(time)}
       if(!TimerOff&&!timerPause){
           DurationInSeconds++;
-         setstopWatchDisplay(secondsToTime(DurationInSeconds,TimerOff,TimeLimitOne))
+         setstopWatchDisplay(secondsToTime(DurationInSeconds))
       }
        battery=navigator.getBattery();
       if(oldBattery!=(await battery).level*100+"%"){
