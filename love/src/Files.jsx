@@ -65,10 +65,11 @@ export let Files=({fetchMethod})=>{
         }}
         id="forlink"
     />
-    <input type="date" value={e}
+    <input type="text" value={e}
     onChange={
         (a)=>{
             se(a.target.value)
+            handleStateC(setminut)
         }
         }
         onKeyDown={
