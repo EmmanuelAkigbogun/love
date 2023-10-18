@@ -61,7 +61,11 @@ function App({fetchMethod}) {
     <>
       <h1>Type Speed</h1>
       <div className="card">
-            <p ref={paragraph} className="read-the-docs" >
+            <p 
+            onSelect={(e)=>{
+                e.target.blur();
+}}
+            ref={paragraph} className="read-the-docs" >
               {states}
             </p>
       </div>
