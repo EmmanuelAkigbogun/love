@@ -8,7 +8,7 @@ navigator.onLine&&
  })
 }
 
-  
+
   export let connection=(fileBoolean,setvalues,setstates,values,downloadListFile,fetchData)=>{
       console.log(fileBoolean)
     if(!fileBoolean&&(downloadListFile.split("&").length)!=0){
@@ -27,9 +27,9 @@ navigator.onLine&&
     if(navigator.onLine){
     fetchData.map( 
         async e=> e==1?
-         window.localStorage.setItem(`fetchData${e}`,await fetchMethod(true)+"\n"+await fetchMethod(true)):
+         window.localStorage.setItem(`fetchData${e}`,await fetchFunction(true)+"\n"+await fetchFunction(true)):
          window.localStorage.getItem(`fetchData${e}`)==null?
-         window.localStorage.setItem(`fetchData${e}`,await fetchMethod(true)+"\n"+await fetchMethod(true)):
+         window.localStorage.setItem(`fetchData${e}`,await fetchFunction(true)+"\n"+await fetchFunction(true)):
          window.localStorage.setItem(`fetchData${e}`, 
          window.localStorage.getItem(`fetchData${e-1}`))
     )

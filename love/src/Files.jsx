@@ -1,12 +1,12 @@
 import { useRef, useState } from "react"
 import { batteryChanged } from "./App"
 let storedList=""
-let settimervar="3"
 export let downloadListFile=""
 export let fileBoolean=true;
+export let timerNumber=3;
 export let Files=({fetchMethod})=>{
     let [labelStyle,setlabelStyle]=useState({})
-    let [e,se]=useState("")
+    let [e,se]=useState("3")
     let url;
     let anchorLink=useRef(null)
     return(
@@ -66,21 +66,6 @@ export let Files=({fetchMethod})=>{
         }}
         id="forlink"
     />
-    <input type="text" value={e}
-    onChange={
-        (a)=>{
-            se(a.target.value)
-            typeof Number (e.target.value)="number"&&settimervar=e.target.value
-          
-        }
-        }
-        onKeyDown={
-            (a)=>{
-        
-               // (a.key=="Delete"||a.key=="Backspace")&&a.preventDefault()
-            }
-        }
-     />
      </>
         
     )

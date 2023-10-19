@@ -15,11 +15,11 @@ export let fetchFunction=async(variable)=>{
        // anc.href=blob
         //anc.click()
         if(variable){
-        k.length==undefined? cssconsolelog=k.message+" Star "+ds:
+        k.length==undefined? cssconsolelog=k.message+" star "+ds:
         cssconsolelog=k[0].meanings[0]
           .definitions[0]
           .definition.replaceAll(")","")
-          .replaceAll("(","")+" Star "+ds
+          .replaceAll("(","")+" star "+ds
         }
         else{
           cssconsolelog=k;
