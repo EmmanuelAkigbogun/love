@@ -1,13 +1,11 @@
-import React, {useRef, useState } from "react";
+import React, {useEffect, useRef, useState } from "react";
 import { online } from "./online";
 import { fetchData } from "./online";
 import { downloadListFile } from "./Files";
 import { fileBoolean } from "./Files";
+import { timerNumber } from "./Files";
 import { connection } from "./online";
-import { settimervar } from "./Files"
 online()
-let wordas=0;
-let wrongWords=0;
 let letteras=0;
 let TimerOff=false
 let TimeLimitOne=false;
@@ -19,11 +17,17 @@ let battery;
 let continuedTimer=false;
 let DurationInSeconds=0;
 let timerPause=false;
-function App({fetchMethod}) {
+function App() {
   let [value,setvalue]=useState("")
   let [timerstate,settimerstate]=useState("Timer")
-  let [minutesState,setminutesState]=useState("3")
-    let [oneTimeBoolean,setoneTimeBoolean]=useState(false)
+  let [minutesState,setminutesState]=useState(3)
+  let [oneTimeBoolean,setoneTimeBoolean]=useState(false)
+  let [date,setdate]=useState(0)
+  let [wordas,setwordas]=useState(0);
+  let [wrongWords,setwrongWords]=useState(0);
+  useEffect(()=>{
+      return setminutesState(e=>e=""+timerNumber)
+  },[timerNumber])  
   let [values,setvalues]=useState(window.localStorage.getItem(`fetchData${22}`)==null?
   1:Number(window.localStorage.getItem(`fetchData${22}`))+1)
   let [states,setstates]=useState("")
@@ -38,22 +42,6 @@ function App({fetchMethod}) {
     }      
   }
 
- let secondsToTime=(DurationInSeconds)=>{
-    let hourTracker=parseInt(DurationInSeconds/3600)
-    let minuteTracker=parseInt((DurationInSeconds-hourTracker*3600)/60)
-    let hourToSec=hourTracker*3600
-     if(TimeLimitOne&&hourTracker==0
-         &&minuteTracker==Number(minutesState)
-         &&(DurationInSeconds-hourToSec-minuteTracker*60)==0){
-         TimerOff=true;TimeLimitOne=false;
-          textareas.current.setAttribute("maxlength",value.length)
-     }
-     else{TimerOff=false}
-    return "Stop Watch => "
-    +hourTracker+":"
-    +minuteTracker+":"
-    +(DurationInSeconds-hourToSec-minuteTracker*60)
-  }
   let stopWatch=()=>{
     TimerOff=false
     setstopWatchDisplay(e=>e="Stop Watch => 0:0:0")
@@ -73,15 +61,34 @@ function App({fetchMethod}) {
       }
       }, 1000)
     }
+    let secondsToTime=(DurationInSeconds)=>{
+    let hourTracker=parseInt(DurationInSeconds/3600)
+    let minuteTracker=parseInt((DurationInSeconds-hourTracker*3600)/60)
+    let hourToSec=hourTracker*3600
+     if(TimeLimitOne&&hourTracker==0
+         &&minuteTracker==Number(minutesState)
+         &&(DurationInSeconds-hourToSec-minuteTracker*60)==0){
+         TimerOff=true;TimeLimitOne=false;
+          textareas.current.setAttribute("maxlength",value.length)
+     }
+     else{TimerOff=false}
+    return "Stop Watch => "
+    +hourTracker+":"
+    +minuteTracker+":"
+    +(DurationInSeconds-hourToSec-minuteTracker*60)
+  }
+  
    return (
     <>
       <h1>Type Speed</h1>
       <div className="card">
             <p 
-            onSelect={(e)=>{
-                e.target.blur();
-}}
-            ref={paragraph} className="read-the-docs" >
+                ref={paragraph} 
+                className="read-the-docs" 
+                onSelect={(e)=>{
+                  e.target.blur()
+                }}
+            >
               {states}
             </p>
       </div>
@@ -142,8 +149,8 @@ function App({fetchMethod}) {
               .slice((paragraph.current.innerText.split(" ").length)-1))
               
               ){//.length instance skip at end
-                  wordas+=value.split(" ").length//-paragraph.current.innerHTML.split("red").length-1
-                  wrongWords+=paragraph.current.innerHTML.split("red").length-1;
+                  setwordas(wordas=wordas+(value.split(" ").length))//-paragraph.current.innerHTML.split("red").length-1
+                   setwrongWords(wrongWords=wrongWords+(paragraph.current.innerHTML.split("red").length-1));
                   letteras+=value.length
                   setvalue(value="")
                   connection(fileBoolean,setvalues,setstates,values,downloadListFile,fetchData)
@@ -162,10 +169,26 @@ function App({fetchMethod}) {
            {stopWatchDisplay}</button>
       <br />
       <br />
+      <section>
+      <button 
+      onClick={()=>{
+        minutesState>0&&setminutesState(Number(minutesState)+1)
+      }}
+      >+</button>
+            <button 
+      onClick={()=>{
+        minutesState>1&&setminutesState(minutesState=Number(minutesState)-1)
+      }}
+      >-</button>
+      </section>
+      <br />
       <button onClick={(e)=>{
         if(e.target.innerText=="Timer"){
           settimerstate(timerstate="Stop Timer")
           setvalue(value="")
+          setwordas(wordas=0)
+          setwrongWords(wrongWords=0)
+          letteras=0
           clearInterval(time)
           continuedTimer=true;
           setstopWatchDisplay(e=>e="Stop Watch => 0:0:0")
@@ -187,6 +210,9 @@ function App({fetchMethod}) {
               TimeLimitOne=true;
               setstopWatchDisplay(e=>e="Stop Watch => 0:0:0")
               setvalue(value="")
+              setwordas(wordas=0)
+              setwrongWords(wrongWords=0)
+              letteras=0
               textareas.current.focus()
               connection(fileBoolean,setvalues,setstates,values,downloadListFile,fetchData)
           }}       
@@ -201,32 +227,40 @@ function App({fetchMethod}) {
             }
           }
           onKeyDown={(e)=>{
-            Number(e.key)==NaN?e.key:setminutesState(s=>s=e.key)
-            console.log(e)
+            Number(e.key)==NaN?e.key:
+            setminutesState(s=>s=Number(e.key))
           }}
-      >Timer ({Number(minutesState)} min)</button>
+      >Timer {minutesState} min</button>
       <br />
       <br />
       <section className="read-the-docs">
         <button>
         words : {
-            value==""?0:value.split(" ").length+wordas+" "
+            value==""?wordas:
+            value.split(" ").length+wordas+" "//
         }
         <br />  
         wrong words : {
-            value==""?0:(paragraph.current.innerHTML.split("red").length-1)+wrongWords+" "
+            value==""?wrongWords:
+            (paragraph.current.innerHTML.split("red").length-1)+wrongWords+" "
         }
         <br />  
         letters : {
-            value==""?0:value.length+letteras
+            value==""?letteras:value.length+letteras//
         }
         <br />
         correct words : {
-            value==""?0+"/"+"min":parseInt((((value.split(" ").length+wordas)-((paragraph.current.innerHTML.split("red").length-1)+wrongWords))/(DurationInSeconds/60)))+"/mins"
+            value==""?
+            parseInt((wordas-wrongWords)/(DurationInSeconds/60))+"/"+"min":
+            parseInt((((value.split(" ").length+wordas)
+            -((paragraph.current.innerHTML.split("red").length-1)+wrongWords))
+            /(DurationInSeconds/60)))+"/mins"
         }
         <br />
         letters : {
-            value==""?0+"/"+"min":parseInt((value.length+letteras)/(DurationInSeconds/60))+"/mins"
+            value==""?
+            parseInt(letteras/(DurationInSeconds/60))+"/"+"min":
+            parseInt((value.length+letteras)/(DurationInSeconds/60))+"/mins"//
         }
         </button> 
       </section>
