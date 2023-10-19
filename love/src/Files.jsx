@@ -6,7 +6,6 @@ export let fileBoolean=true;
 export let timerNumber=3;
 export let Files=({fetchMethod})=>{
     let [labelStyle,setlabelStyle]=useState({})
-    let [e,se]=useState("3")
     let url;
     let anchorLink=useRef(null)
     return(
