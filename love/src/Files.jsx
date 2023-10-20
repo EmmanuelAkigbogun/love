@@ -13,8 +13,8 @@ let stab=useRef(null)
         <>
         <section className="love">
             <button>
-                <a ClassName="red" style={{width:"100%"}}
-                    onClick={async()=>{
+                <a style={{background:"green"}}
+                    onClick={async(e)=>{
                         let num=Number(prompt("Input a number"))
                         storedList=""
                         for (let i=1;i<num+1;i++){
