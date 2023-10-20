@@ -30,9 +30,9 @@ stab.current.style.width="0%"
                 >
                     offline Download
                 </a>
-                <div ref={stab} style={{position:"absolute",height:"100%",width:"0%"}} className="red"></section>
+                <mark ref={stab} style={{position:"absolute",height:"100%",width:"0%"}} className="red"></section>
             </button>
-    </div>
+    </mark>
     <section className="love">
         <button>
             <a> 
