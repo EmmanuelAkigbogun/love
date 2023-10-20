@@ -8,11 +8,12 @@ export let Files=({fetchMethod})=>{
     let [labelStyle,setlabelStyle]=useState({})
     let url;
     let anchorLink=useRef(null)
+let stab=useRef(null)
     return(
         <>
         <section className="love">
             <button>
-                <a ClassName="red"
+                <a ClassName="red" style={{width:"100%"}}
                     onClick={async()=>{
                         let num=Number(prompt("Input a number"))
                         storedList=""
