@@ -4,7 +4,6 @@ let storedList=""
 export let downloadListFile=""
 export let fileBoolean=true;
 export let timerNumber=3;
-let num;
 export let Files=({fetchMethod})=>{
     let [labelStyle,setlabelStyle]=useState({})
     let url;
@@ -14,16 +13,16 @@ export let Files=({fetchMethod})=>{
         <>
         <section className="love">
             <button style={{position:"relative"}}>
-                <a 
-                    onClick={async()=>{
-                         num=Number(prompt("Input a number"))
+                <a style={{position:"absolute", height:100%, width:"0%"}} className="red"
+                    onClick={async(e)=>{
+                        let num=Number(prompt("Input a number"))
                         storedList=""
                         for (let i=1;i<num+1;i++){
-                            storedList+=await fetchMethod(true)+"\n"+await fetchMethod(true)+"&";
-stab.current.style.width=""+i*100/num+"%";
+                            storedList+=await fetchMethod(true)+"\n"+await fetchMethod(true)+"&"
+e.target.style.width=""+((i*100)/num)+"%"
                         }
-stab.current.style.width="0%"
-                        let blob=new File([storedList],"love.txt")
+
+e.target.style.width=""+((i*100)/num)+"%";                        let blob=new File([storedList],"love.txt")
                         url=URL.createObjectURL(blob)
                         anchorLink.current.href=url
                         anchorLink.current.click()
@@ -31,9 +30,9 @@ stab.current.style.width="0%"
                 >
                     offline Download
                 </a>
-                <mark ref={stab} style={{position:"absolute",height:"100%",width:"0%"}} className="red"></section>
+                <section></section>
             </button>
-    </mark>
+    </section>
     <section className="love">
         <button>
             <a> 
