@@ -8,7 +8,7 @@ export let Files=({fetchMethod})=>{
     let [labelStyle,setlabelStyle]=useState({})
     let url;
     let anchorLink=useRef(null)
-    let stab=useRef(null)
+  
     return(
         <>
         <section className="love">
@@ -30,7 +30,7 @@ e.target.style.width=""+((i*100)/num)+"%";                        let blob=new F
                 >
                     offline Download
                 </a>
-                <section></section>
+              
             </button>
     </section>
     <section className="love">
