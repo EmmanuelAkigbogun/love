@@ -29,7 +29,7 @@ e.target.style=background="green";
                 >
                     offline Download
                 </a>
-                <div style={{position:"absolute", height:"100%",width:"5%", background:"red"}}></div>
+                <div style={{position:"absolute", height:"100%",width:"5%",top:"0%,left"0%", background:"red"}}></div>
             </button>
     </section>
     <section className="love">
