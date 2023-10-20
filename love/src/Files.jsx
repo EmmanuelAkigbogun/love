@@ -4,6 +4,7 @@ let storedList=""
 export let downloadListFile=""
 export let fileBoolean=true;
 export let timerNumber=3;
+let num;
 export let Files=({fetchMethod})=>{
     let [labelStyle,setlabelStyle]=useState({})
     let url;
@@ -15,11 +16,11 @@ export let Files=({fetchMethod})=>{
             <button style={{position:"relative"}}>
                 <a 
                     onClick={async()=>{
-                        let num=Number(prompt("Input a number"))
+                         num=Number(prompt("Input a number"))
                         storedList=""
                         for (let i=1;i<num+1;i++){
                             storedList+=await fetchMethod(true)+"\n"+await fetchMethod(true)+"&";
-stab.current.style.width=`${(i/num)*100}%`
+stab.current.style.width=""+i*100/num+"%";
                         }
 stab.current.style.width="0%"
                         let blob=new File([storedList],"love.txt")
