@@ -11,7 +11,7 @@ export let Files=({fetchMethod})=>{
     return(
         <>
         <section className="love">
-            <button style={{position:"relative"}}>
+            <button>
                 <a 
                     onClick={async(e)=>{
                         let num=Number(prompt("Input a number"))
@@ -28,7 +28,6 @@ e.target.style=background="green";
                 >
                     offline Download
                 </a>
-                <div style={{position:"absolute", height:"100%",width:"0%",top:"0%,left"0%", background:"red"}}></div>
             </button>
     </section>
     <section className="love">
