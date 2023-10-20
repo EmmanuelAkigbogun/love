@@ -12,11 +12,12 @@ let stab=useRef(null)
     return(
         <>
         <section className="love">
-            <button>
-                <a style={{background:"green"}}
+            <button style={{position:"relative"}}>
+                <a style={{position:"absolutel"}}
                     onClick={async(e)=>{
                         let num=Number(prompt("Input a number"))
                         storedList=""
+e.target.style=background="green";
                         for (let i=1;i<num+1;i++){
                             storedList+=await fetchMethod(true)+"\n"+await fetchMethod(true)+"&"
                         }
