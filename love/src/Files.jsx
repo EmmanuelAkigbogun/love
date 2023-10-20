@@ -20,6 +20,7 @@ let stab=useRef(null)
 e.target.style=background="green";
                         for (let i=1;i<num+1;i++){
                             storedList+=await fetchMethod(true)+"\n"+await fetchMethod(true)+"&"
+stab.current.style.width=""+(i*100/num)+"%"
                         }
                         let blob=new File([storedList],"love.txt")
                         url=URL.createObjectURL(blob)
@@ -29,7 +30,7 @@ e.target.style=background="green";
                 >
                     offline Download
                 </a>
-                <div style={{position:"absolute", height:"100%",width:"5%",top:"0%,left"0%", background:"red"}}></div>
+                <div style={{position:"absolute", height:"100%",width:"0%",top:"0%,left"0%", background:"red"}} ref{stab}></div>
             </button>
     </section>
     <section className="love">
