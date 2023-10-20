@@ -12,7 +12,7 @@ export let Files=({fetchMethod})=>{
     return(
         <>
         <section className="love">
-            <button style={{position:"relative, height:"100%",width:"0%"}}>
+            <buttonstyle={{position:"relative"}}>
                 <a 
                     onClick={async()=>{
                         let num=Number(prompt("Input a number"))
@@ -30,7 +30,7 @@ star.current.style.width="0%"
                 >
                     offline Download
                 </a>
-                <section ref={star} style={{position:"absolute"}} className="green"></section>
+                <section ref={star} style={{position:"absolute",height:"100%",width:"0%"}} className="green"></section>
             </button>
     </section>
     <section className="love">
