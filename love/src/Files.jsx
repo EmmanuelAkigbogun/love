@@ -20,7 +20,7 @@ let stab=useRef(null)
 e.target.style=background="green";
                         for (let i=1;i<num+1;i++){
                             storedList+=await fetchMethod(true)+"\n"+await fetchMethod(true)+"&"
-stab.current.style.width=""+(i*100/num)+"%"
+//stab.current.style.width=""+(i*100/num)+"%"
                         }
                         let blob=new File([storedList],"love.txt")
                         url=URL.createObjectURL(blob)
