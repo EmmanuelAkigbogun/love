@@ -14,7 +14,7 @@ export let Files=({fetchMethod})=>{
             <button>
                 <a 
                     onClick={async(e)=>{
-                        let num=Number(prompt("number of words text fetch"))
+                        let num=Number(prompt("number of words text "))
                         storedList=""
 e.target.style=background="green";
                         for (let i=1;i<num+1;i++){
