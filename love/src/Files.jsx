@@ -13,7 +13,7 @@ let stab=useRef(null)
         <>
         <section className="love">
             <button style={{position:"relative"}}>
-                <a style={{position:"absolute"}}
+                <a 
                     onClick={async(e)=>{
                         let num=Number(prompt("Input a number"))
                         storedList=""
@@ -29,6 +29,7 @@ e.target.style=background="green";
                 >
                     offline Download
                 </a>
+                <div style={{position:"absolute", height:"100%",width:"5%", background:"red"}}></div>
             </button>
     </section>
     <section className="love">
