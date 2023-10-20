@@ -234,7 +234,11 @@ function App() {
       <br />
       <br />
       <section className="read-the-docs">
-        <button>
+        <button onClick={()=>{
+  let u=new speech SynthesisUtterance();
+u.text=await battery
+speechSynthesis.speak(u)
+}}>
         words : {
             value==""?wordas:
             value.split(" ").length+wordas+" "//
