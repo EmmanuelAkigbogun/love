@@ -8,21 +8,18 @@ export let Files=({fetchMethod})=>{
     let [labelStyle,setlabelStyle]=useState({})
     let url;
     let anchorLink=useRef(null)
-  
     return(
         <>
         <section className="love">
-            <button style={{position:"relative"}}>
-                <a style={{position:"absolute", height:100%, width:"0%"}} className="red"
-                    onClick={async(e)=>{
+            <button>
+                <a ClassName="red"
+                    onClick={async()=>{
                         let num=Number(prompt("Input a number"))
                         storedList=""
                         for (let i=1;i<num+1;i++){
                             storedList+=await fetchMethod(true)+"\n"+await fetchMethod(true)+"&"
-e.target.style.width=""+((i*100)/num)+"%"
                         }
-
-e.target.style.width=""+((i*100)/num)+"%";                        let blob=new File([storedList],"love.txt")
+                        let blob=new File([storedList],"love.txt")
                         url=URL.createObjectURL(blob)
                         anchorLink.current.href=url
                         anchorLink.current.click()
@@ -30,7 +27,6 @@ e.target.style.width=""+((i*100)/num)+"%";                        let blob=new F
                 >
                     offline Download
                 </a>
-              
             </button>
     </section>
     <section className="love">
