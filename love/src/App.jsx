@@ -172,14 +172,14 @@ function App() {
       <section>
       <button 
       onClick={()=>{
-        minutesState>0&&setminutesState(Number(minutesState)+1)
-      }}
-      >+</button>
-            <button 
-      onClick={()=>{
-        minutesState>1&&setminutesState(minutesState=Number(minutesState)-1)
+        minutesState>1&&setminutesState(Number(minutesState)-1)
       }}
       >-</button>
+            <button 
+      onClick={()=>{
+        minutesState>0&&setminutesState(minutesState=Number(minutesState)+1)
+      }}
+      >+</button>
       </section>
       <br />
       <button onClick={(e)=>{
@@ -234,11 +234,7 @@ function App() {
       <br />
       <br />
       <section className="read-the-docs">
-        <button onClick={()=>{
-  let u=new speech SynthesisUtterance();
-u.text=await battery
-speechSynthesis.speak(u)
-}}>
+        <button>
         words : {
             value==""?wordas:
             value.split(" ").length+wordas+" "//
