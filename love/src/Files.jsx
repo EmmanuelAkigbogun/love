@@ -13,7 +13,7 @@ let stab=useRef(null)
         <>
         <section className="love">
             <button style={{position:"relative"}}>
-                <a style={{position:"absolutel"}}
+                <a style={{position:"absolute"}}
                     onClick={async(e)=>{
                         let num=Number(prompt("Input a number"))
                         storedList=""
